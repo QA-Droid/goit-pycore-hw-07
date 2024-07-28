@@ -38,8 +38,8 @@ class Birthday(Field):
         """Birthday validation and conversion to datetime"""
         try:
             return datetime.strptime(birthday, "%d.%m.%Y").date()
-        except ValueError:
-            raise ValueError("Invalid date format. Use DD.MM.YYYY")
+        except ValueError as e:
+            raise ValueError("Invalid date format. Use DD.MM.YYYY") from e
 
 class Record:
     """Class for address book to add, remove, edit and find phone number and birthday"""
